@@ -1,38 +1,45 @@
 #include <iostream>
-#include <typeinfo>
-#include<string>
 using namespace std;
-int main()
-{
-long long divi = 1000000000000,digit;
-short d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, div, rem = 10, ver, sum;
-cout << "Digite um numero inteiro de 13 digitos: ";
-cin >> digit;
-string digit1 = to_string(digit);
-if (digit1.length() == 13) {
-	d12 = (digit / divi);
-	d11 = (digit / (divi / rem)) % rem * 3;
-	d10 = (digit / (divi / rem^2) % rem);
-	d9 = (digit / (divi / rem^3) % rem) * 3;
-	d8 = (digit / (divi / rem^4) % rem);
-	d7 = (digit / (divi / rem^5) % rem * 3);
-	d6 = (digit / (divi / rem^6) % rem);
-	d5 = (digit / (divi / rem^7) % rem * 3);
-	d4 = (digit / (divi / rem^8) % rem);
-	d3 = (digit / (divi / rem^9) % rem * 3);
-	d2 = (digit / (divi / rem^10) % rem);
-	d1 = (digit / (divi / rem^11) % rem * 3);
-	d0 = (digit / (divi / rem^12) % rem);
-	sum = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + d11 + d12;
-	div = sum / 10;
-	div += 1;
-	div *= 10;
-	ver = (div - sum);
-	cout << ver << "\n";
-}
-else
-{
-	cout << "Digito inválido";
-}
-	return 0;
+int main() {
+    long long digit,divi=1000000000000; // setando o tipo digit e divi como long long e definindo o valor de divi.
+    short d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,div,rem =10,ver; //setando o tipo dos digitos individuais e demais variaveis como tipo short por ser números que não precisam de tantos bits
+    cout << "Digite um numero inteiro de 13 digitos: "; // informa ao usuario o dado requisitado
+    cin >> digit; // guarda o dado em uma váriavel
+    string digit1 = to_string(digit); // digit foi criado como int, entretando para que possamos medir a quantidade de caracter que o usuario informou anteriormente temos que transformar em uma string por conta disso foi criada outra variável com um tipo diferente.
+    if(digit1.length() == 13){ //e lancada uma condicao baseada nos dados passados anteriormente
+    d12 = (digit/divi); // laco de repeticao que servira para isolar cada numero em uma variavel
+    d11 = (digit/(divi/10))%rem*3;
+    d10 = (digit/(divi/100)%rem);
+    d9 = (digit/(divi/1000)%rem)*3;
+    d8 = (digit/(divi/10000)%rem);
+    d7 = (digit/(divi/100000)%rem*3);
+    d6 = (digit/(divi/1000000)%rem);
+    d5 = (digit/(divi/10000000)%rem*3);
+    d4 = (digit/(divi/100000000)%rem);
+    d3 = (digit/(divi/1000000000)%rem*3);
+    d2 = (digit/(divi/10000000000)%rem);
+    d1 = (digit/(divi/100000000000)%rem*3);
+    d0 = (digit/(divi/1000000000000)%rem);
+    short sum = d1+d2+d3+d4+d5+d6+d7+d8+d9+d10+d11+d12; // a somatoria de todos os digitos com excessao do digito verificador
+    div = sum / 10; // passo para confirmar o digito verificador
+    div += 1; // passo para confirmar o digito verificador
+    div *= 10; //passo para confirmar o digito verificador
+    ver = (div - sum); //pegando os passos anteriores e subtraindo do valor da somatoria
+     if (ver%10 == 0) //verificando se o digito verificador foi multiplo de 10
+     {
+        ver = 0; // caso seja multiplo de 10 caira na condicao e transformara o digito verificador em 0
+     }
+     if (ver != d0) // caso o digito verificar seja diferente do ultimo digito do codigo de barra ira dar como incorreto e encerrara o programa
+     {
+         cout<< "Código verificador incorreto!";
+         return 0;
+     }
+    cout<<"Código de barras válido \n"; //caso passe por todos os passos sem ocorrer nenhum problema ele retornara como valido
+    }
+    else
+    {
+        cout<<"Digito inválido";// dando continuidade a primeira condicao feita caso ela nao se cumpra caira nessa ultima saida e encerrara o programa
+        return 0;
+    }
+    return 0;
 }
