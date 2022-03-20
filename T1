@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 int main() {
+// Trabalho efetuado por Daniel Battisti e
     long long digit,divi=1000000000000; // setando o tipo digit e divi como long long e definindo o valor de divi.
     short d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,div,rem =10,ver; //setando o tipo dos digitos individuais e demais variaveis como tipo short por ser números que não precisam de tantos bits
     cout << "Digite um numero inteiro de 13 digitos: "; // informa ao usuario o dado requisitado
@@ -31,14 +32,14 @@ int main() {
      }
      if (ver != d0) // caso o digito verificar seja diferente do ultimo digito do codigo de barra ira dar como incorreto e encerrara o programa
      {
-         cout<< "Código verificador incorreto!";
+         cout<< "dígito verificador inconsistente!";
          return 0;
      }
-    cout<<"Código de barras válido \n"; //caso passe por todos os passos sem ocorrer nenhum problema ele retornara como valido
+    cout<<"Correto \n"; //caso passe por todos os passos sem ocorrer nenhum problema ele retornara como valido
     }
     else
     {
-        cout<<"Digito inválido";// dando continuidade a primeira condicao feita caso ela nao se cumpra caira nessa ultima saida e encerrara o programa
+        cout<<"Numero de dígitos inválido";// dando continuidade a primeira condicao feita caso ela nao se cumpra caira nessa ultima saida e encerrara o programa
         return 0;
     }
     return 0;
