@@ -1,11 +1,18 @@
 #include <iostream>
 using namespace std;
 int main() {
+    //setando variaveis
     long long digit,sep=1000000000000;
     short d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,divi,remov =10,ver;
+    
+    //solicitando ao usuario as informacoes
     cout << "Digite um numero inteiro de 13 digitos: ";
     cin >> digit;
+    
+    //1º etapa de verificacao caso retorne True o programa da continuidade
     if (digit >= sep && digit <= 9999999999999){
+    
+    //separando o código individualmente em cada variavel 
     d12 = (digit/sep);
     d11 = (digit/(sep/10))%remov*3;
     d10 = (digit/(sep/100)%remov);
@@ -19,6 +26,8 @@ int main() {
     d2 = (digit/(sep/10000000000)%remov);
     d1 = (digit/(sep/100000000000)%remov*3);
     d0 = (digit/(sep/1000000000000)%remov);
+    
+    //2º etapa, verificação do digito verificador
     short sum = d1+d2+d3+d4+d5+d6+d7+d8+d9+d10+d11+d12;
     divi = sum / 10;
     divi += 1;
@@ -28,13 +37,20 @@ int main() {
      {
         ver = 0;
      }
+     
+     //caso passe por todas as etapas e o digito verificador seja divergente do ultimo digito do código, vai acusar um raise e terminar o programa com  uma mensagem de erro.
      if (ver != d0)
      {
          cout<< "dígito verificador inconsistente!";
          return 0;
      }
+     
+    // caso contrario retorna uma mensagem
     cout<<"Correto \n";
+    
     }
+    
+    //ainda na 1º condição, caso a mesma não seja satisfeita o programa joga o usuário para essa parte do código e retorna a mensagem.
      else
     {
         cout<<"Numero de dígitos inválido";
